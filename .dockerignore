@@ -1,0 +1,6 @@
+/src/.env
+/src/.gitattributes
+/src/vendor
+/src/vite.config.js
+/src/tests
+/src/README.md
