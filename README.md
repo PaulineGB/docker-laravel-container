@@ -1,27 +1,17 @@
 # What’s inside ?
 
-- php 8
+- php 8.1
 - apache
 - postgis db
 
 # To build this container
 
 ```
-docker-compose up -d --build
+docker-compose up -d
 ```
 
-# To create a Laravel project
+# To use in your Laravel project
 
-```
-cd php
-docker-compose exec php-apache /bin/bash
-```
-
-This opens a CLI in the container and you can run the following command to create a Laravel project:
-
-```
-composer create-project laravel/laravel .
-```
-
-Then, you can navigate to http://localhost:8080/ which should display the Laravel Welcome page.
-All the folders and files needed to run Laravel are stored in the * */src* * folder of your application.
+This container run with an empty and simple Laravel base project and postgres db.
+To use with your project, just copy and past your app in the * */src* * folder.
+Don't forget to add a * *.env* * file with your datas.
