@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:8.1-apache
 
 # Install dependencies
 RUN apt-get update \
@@ -11,7 +11,15 @@ RUN docker-php-ext-configure intl \
     && docker-php-ext-install ldap imap intl gd curl pdo pdo_pgsql pgsql mbstring xml zip sockets bcmath soap \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
-    
-WORKDIR /var/www/laravel-docker-image
 
+WORKDIR /var/www/
+
+COPY ./docker /var/www
+
+# Install composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+COPY ./src /var/www
+
+RUN composer install --optimize-autoloader --no-dev

@@ -15,11 +15,11 @@ services:
   php-apache:
     container_name: php-apache
     build:
-      context: ./php
+      context: .
     ports:
         - '8080:80'
     volumes:
       - ./src:/var/www/laravel-docker-image
-      - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./docker/apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
     depends_on:
       - database

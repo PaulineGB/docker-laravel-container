@@ -1,5 +1,3 @@
-Docker Laravel Container
-
 # What’s inside ?
 
 - php 8
@@ -26,4 +24,4 @@ composer create-project laravel/laravel .
 ```
 
 Then, you can navigate to http://localhost:8080/ which should display the Laravel Welcome page.
-All the folders and files needed to run Laravel are stored in the src folder in of your application.
+All the folders and files needed to run Laravel are stored in the * */src* * folder of your application.
