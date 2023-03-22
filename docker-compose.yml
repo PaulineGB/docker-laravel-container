@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  
+  database:
+    image: postgis/postgis
+    restart: always
+    container_name: laravel-docker-db
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: laradock
+    ports:
+      - 5434:5432/tcp
+  
+  php-apache:
+    container_name: php-apache
+    build:
+      context: ./php
+    ports:
+        - '8080:80'
+    volumes:
+      - ./src:/var/www/laravel-docker-image
+      - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+    depends_on:
+      - database
